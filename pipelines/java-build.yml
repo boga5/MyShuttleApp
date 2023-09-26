@@ -11,22 +11,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
-    options: '-e'
     publishJUnitResults: false
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
-- task: Maven@4
-  name: buildTask
-  inputs:
-    mavenPomFile: 'pom.xml'
-    publishJUnitResults: false
+    codeCoverageToolOption: 'JaCoCo'
+    codeCoverageRestoreOriginalPomXml: true
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
